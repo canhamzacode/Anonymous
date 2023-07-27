@@ -5,7 +5,7 @@ import { Box } from '@mui/material'
 
 const Layout = () => {
     return (
-        <Box>
+        <Box sx={{ width: "100%" }}>
             <NavBar />
             <Outlet />
         </Box>

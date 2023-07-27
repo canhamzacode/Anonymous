@@ -3,7 +3,13 @@
 @tailwind utilities;
 
 body {
-    background: #78EEFE;
+    /* background: #53c5d4; */
+    background: #97a9d0;
+    /* background: #a2b4db; */
+}
+
+.ladyWithImg {
+    width: 80%;
 }
 
 .loadingContainer {
@@ -32,4 +38,14 @@ body {
     100% {
         transform: rotate(360deg);
     }
+}
+
+
+.profileImg img {
+    border-radius: 50%;
+}
+
+.profileImg {
+    width: 50px;
+    height: 50px;
 }
