@@ -10,6 +10,7 @@ body {
 
 .ladyWithImg {
     width: 80%;
+    border-radius: 35px;
 }
 
 .loadingContainer {
@@ -49,3 +50,61 @@ body {
     width: 50px;
     height: 50px;
 }
+
+
+/* categories Style */
+.categriesHeader {
+    color: var(--primary, #001e50);
+    font-family: Montserrat;
+}
+
+.custom-bar::-webkit-scrollbar {
+    display: none;
+}
+
+.categriesHeader p {
+    /* color: var(--secondary, #8d8d8d); */
+}
+
+.categriesHeader h2 {
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 700;
+}
+
+.categriesHeader h3 {
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+}
+
+.categoriesCard {
+    width: 100%;
+    min-width: 250px;
+    /* background-color: red; */
+}
+
+.categoriesCard img {
+    width: 100%;
+    border-radius: 20px;
+}
+
+.fig {
+    width: 100%;
+    height: 250px;
+    border-radius: 15px;
+}
+
+
+@media (max-width: 562px) {
+    .myCollapse {
+        /* display: ; */
+        flex-direction: column;
+    }
+
+    .categriesHeader h2 {
+        font-size: 20px;
+    }
+}
+
+/* ending  */
