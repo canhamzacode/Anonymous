@@ -4,43 +4,47 @@ import Anonymous2 from "../assets/image/Anonymous2.jpg"
 import download1 from "../assets/image/download1.jpg"
 import download2 from "../assets/image/download2.jpg"
 import download3 from "../assets/image/download3.jpg"
-import { Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 
 
 const categories = [
     {
         image: Anonymous2,
-        title: "Tech",
-        description: "All distributions of tech books",
+        title: "Anonymity",
+        description: "Our Platform ensures your privacy so that you stay anonymous everytime you send someone a secret message. You are anonymous until you ever choose to reveal your identity.",
     },
     {
         image: download1,
-        title: "Nutrition",
-        description: "Boost your Nutrition and Health with these books",
+        title: "Safe & Secure",
+        description: "Safety of our users using this anonymous messaging platform is very important for us. We have got reporting systems so that you can report anything that you do not like to see.",
     },
     {
         image: download2,
-        title: "Sports",
-        description: "For Athletes, get in the zone and aim for the summit.",
+        title: "24/7 Support",
+        description: "If there is anything that you need help with related to our anonymous messaging and feedback platform, We are always here for you. 24 hours a day and 7 days a week.",
     },
     {
         image: download3,
-        title: "Tech",
-        description: "All distributions of tech books",
+        title: "Easy 2 Use",
+        description: "We are constantly working on Kubool as a platform to make it as user friendly as possible. As of now you can just download our app, fill in your username & pass to get started.",
     },
 ];
 const TopCategories = () => {
 
     return (
-        // <div className="bg-[#E9FCF4] w-full px-10 py-5 categriesHeader">
-        <div className=" w-full  py-5 categriesHeader  ">
-            <Typography variant="h4" sx={{ textAlign: "center", padding: "10px", marginTop: "20px" }}>
-                Why Us
-            </Typography>
-            <Typography variant="p" sx={{ textAlign: "center", padding: "10px", marginTop: "20px" }}>
-                Our Anonymous Messaging App comes along with many great features. Here we are going to list some of them. Have a look below.
-            </Typography>
-            <div className="w-full flex items-start pt-3 overflow-x-auto gap-8 custom-bar">
+        <Box className=" w-full  py-5 categriesHeader">
+            <Box sx={{ marginX: "auto", maxWidth: "600px", textAlign: "center" }}>
+                <Typography variant="h4" sx={{ textAlign: "center", padding: "10px", marginTop: "20px" }}>
+                    Why Us?
+                </Typography>
+                <Typography variant='p' sx={{
+                    fontSize: "20px",
+                    fontWeight: "500"
+                }}>
+                    Our Anonymous Messaging App comes along with many great features. Here we are going to list some of them. Have a look below.
+                </Typography>
+            </Box>
+            <Box className="w-full flex items-start pt-3 overflow-x-auto gap-8 custom-bar">
                 {categories.map((category, key) => {
                     return (
                         <CategoriesCard
@@ -51,8 +55,8 @@ const TopCategories = () => {
                         />
                     );
                 })}
-            </div>
-        </div>
+            </Box>
+        </Box>
     );
 };
 

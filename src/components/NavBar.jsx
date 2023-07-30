@@ -3,7 +3,6 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 const navBtn = {
-    // background: "linear-gradient(90deg,#ffce6d,#fdc962,#fcc456,#fabe4a,#f8b93d)",
     background: "linear-gradient(90deg,#97a9d0,#fff)",
     color: "black",
     borderRadius: "15px",
@@ -16,19 +15,19 @@ const navBtn = {
 }
 const NavBar = () => {
     return (
-        <Stack direction={"row"} sx={{ display: "flex", alignItems: "center", justifyContent: "space-between", width: "100%", padding: "20px", background: "#a2b4db" }}>
+        <Stack direction={"row"} sx={{ display: "flex", alignItems: "center", justifyContent: "space-between", width: "100%", padding: { xs: "20px", md: "20px 40px" }, background: "#a2b4db" }}>
             <Link to="/">
                 <Typography variant='h1' sx={{ fontSize: "30px", }}>
                     Annonymous
                 </Typography>
             </Link>
             <Stack direction={"row"} sx={{ display: "flex", alignItems: "center", gap: { md: "50px", xs: "20px" }, }}>
-                <Link className='text-black'>
+                <Link to="/login">
                     <Button sx={navBtn}>
                         Login
                     </Button>
                 </Link>
-                <Link>
+                <Link to="/signup">
                     <Button sx={navBtn}>
                         Sign Up
                     </Button>

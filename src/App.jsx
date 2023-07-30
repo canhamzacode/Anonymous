@@ -4,6 +4,8 @@ import Layout from "./Layout"
 import Loading from "./components/Loading";
 
 const Home = lazy(() => import("../src/pages/Home"));
+const Login = lazy(() => import("../src/pages/Login"));
+const SignUp = lazy(() => import("../src/pages/SignUp"));
 
 function App() {
 
@@ -18,7 +20,24 @@ function App() {
             </Suspense>
           }
         />
+        <Route
+          path="/login"
+          element={
+            <Suspense fallback={<Loading />}>
+              <Login />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/signup"
+          element={
+            <Suspense fallback={<Loading />}>
+              <SignUp />
+            </Suspense>
+          }
+        />
       </Route>
+
     </Routes>
   )
 }

@@ -16,13 +16,13 @@ const navBtn = {
 
 const Home = () => {
     return (
-        <Box sx={{ width: "100%", padding: "20px", }}>
+        <Box sx={{ width: "100%", }}>
             <Stack sx={{
                 display: "grid",
                 gridTemplateColumns: { md: "0.8fr 1fr", xs: "1fr" },
                 gap: "25px",
                 alignItems: "center",
-
+                padding: { xs: "20px", md: "40px" }
             }}>
                 <Box sx={{ display: "flex", width: "100%", alignItems: "center", justifyContent: "center" }}>
                     <img src={download3} alt="image" className="ladyWithImg" />
@@ -44,7 +44,14 @@ const Home = () => {
                     </Button>
                 </Box>
             </Stack>
-            <TopCategories />
+            <Box sx={{
+                display: "flex",
+                alignItems: "center",
+                padding: { xs: "20px", md: "40px" },
+                background: "#a2b4db"
+            }}>
+                <TopCategories />
+            </Box>
         </Box>
     )
 }
