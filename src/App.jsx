@@ -6,6 +6,7 @@ import Loading from "./components/Loading";
 const Home = lazy(() => import("../src/pages/Home"));
 const Login = lazy(() => import("../src/pages/Login"));
 const SignUp = lazy(() => import("../src/pages/SignUp"));
+const Profile = lazy(() => import("../src/pages/Profile"));
 
 function App() {
 
@@ -33,6 +34,14 @@ function App() {
           element={
             <Suspense fallback={<Loading />}>
               <SignUp />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/:id"
+          element={
+            <Suspense fallback={<Loading />}>
+              <Profile />
             </Suspense>
           }
         />
