@@ -1,7 +1,12 @@
 import { Box, Button, Typography } from '@mui/material'
 import React from 'react'
-import auth from "../assets/image/auth.jpg"
+import authImage from "../assets/image/auth.jpg"
 import { Link } from 'react-router-dom'
+import { useForm } from "react-hook-form"
+import * as yup from "yup"
+import { yupResolver } from "@hookform/resolvers/yup"
+import { auth } from '../config/firebase'
+import { createUserWithEmailAndPassword } from 'firebase/auth'
 
 
 const navBtn = {
@@ -14,6 +19,27 @@ const navBtn = {
 }
 
 const SignUp = () => {
+    const schema = yup.object().shape({
+        email: yup.string().email("Invalid email format").required("This field is required"),
+        username: yup.string().required("This field is required"),
+        password: yup.string().required("This Field is required")
+    });
+
+    const { register, handleSubmit, formState: { errors } } = useForm({
+        resolver: yupResolver(schema)
+    });
+
+    const onCreateAccount = async (data) => {
+        try {
+            const { email, password } = data;
+            const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+            const user = userCredential.user;
+            console.log('User created:', user);
+        } catch (error) {
+            console.error('Error creating user:', error);
+        }
+    };
+
     return (
         <Box sx={{ display: "grid", gridTemplateColumns: { xs: "1fr", md: "1fr 1fr" }, padding: { md: "40px", xs: "20px" }, minHeight: "80vh", gap: "30px", alignItems: "center" }}>
             <Box sx={{ display: "flex", flexDirection: "column", gap: "20px" }}>
@@ -23,12 +49,17 @@ const SignUp = () => {
                     </Typography>
                 </Box>
                 <Box sx={{ padding: " 0", display: "grid", gap: "10px" }}>
-                    <form className='grid gap-3' >
+                    <form className='grid gap-3' onSubmit={handleSubmit(onCreateAccount)} >
+                        <label htmlFor="email" className='text-2xl'>Email</label>
+                        <input type="email" placeholder='Email' className='p-2' {...register('email')} />
+                        {errors.email && <Typography variant='p' sx={{ color: "red" }}>{errors.email.message}</Typography>}
                         <label htmlFor="username" className='text-2xl'>Username</label>
-                        <input type="text" placeholder='Username' className='p-2' />
+                        <input type="text" placeholder='Username' className='p-2' {...register('username')} />
+                        {errors.username && <Typography variant='p' sx={{ color: "red" }}>{errors.email.message}</Typography>}
                         <label htmlFor="username" className='text-2xl'>Password</label>
-                        <input type="password" placeholder='Password' className='p-2' />
-                        <Button sx={navBtn}>
+                        <input type="password" placeholder='Password' className='p-2' {...register('password')} />
+                        {errors.password && <Typography variant='p' sx={{ color: "red" }}>{errors.password.message}</Typography>}
+                        <Button type='submit' sx={navBtn}>
                             Sign Up
                         </Button>
                     </form>
@@ -40,7 +71,7 @@ const SignUp = () => {
                 </Box>
             </Box>
             <Box sx={{ padding: "40px", height: "500px", display: { md: "flex", xs: "none" } }}>
-                <img src={auth} alt="" className='w-full h-full' />
+                <img src={authImage} alt="" className='w-full h-full' />
             </Box>
         </Box>
     )
