@@ -1,6 +1,8 @@
-import { Box, Button, Stack, Typography } from '@mui/material'
-import React from 'react'
+import { Box, Button, Stack, Typography, Avatar } from '@mui/material'
+import React, { useContext, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import { AuthContext } from '../providers/AuthProvider'
+import PowerSettingsNewIcon from '@mui/icons-material/PowerSettingsNew';
 
 const navBtn = {
     background: "linear-gradient(90deg,#97a9d0,#fff)",
@@ -14,6 +16,15 @@ const navBtn = {
     fontWeight: "600"
 }
 const NavBar = () => {
+    const { user, logout } = useContext(AuthContext);
+    const signUserOut = async () => {
+        // toggle();
+        logout();
+        // navigate("/");
+    }
+    useEffect(() => {
+        console.log(user);
+    }, [])
     return (
         <Stack direction={"row"} sx={{ display: "flex", alignItems: "center", justifyContent: "space-between", width: "100%", padding: { xs: "20px", md: "20px 40px" }, background: "#a2b4db" }}>
             <Link to="/">
@@ -22,21 +33,34 @@ const NavBar = () => {
                 </Typography>
             </Link>
             <Stack direction={"row"} sx={{ display: "flex", alignItems: "center", gap: { md: "50px", xs: "20px" }, }}>
-                <Link to="/login">
+                {!user && <Link to="/login">
                     <Button sx={navBtn}>
                         Login
                     </Button>
-                </Link>
-                <Link to="/signup">
+                </Link>}
+                {!user && < Link to="/signup">
                     <Button sx={navBtn}>
                         Sign Up
                     </Button>
-                </Link>
+                </Link>}
+                {user && <Button sx={navBtn} onClick={signUserOut}>
+                    <PowerSettingsNewIcon />
+                </Button>}
+                {/* {<Button sx={navBtn} onClick={signUserOut}>
+                    <PowerSettingsNewIcon />
+                </Button>} */}
+                {user && <div className="profileImg" >
+                    {/* <img src={""} alt="profile" /> */}
+                    <Avatar />
+                </div>}
                 {<div className="profileImg" >
-                    <img src={""} alt="profile" />
+                    {/* <img src={""} alt="profile" /> */}
+                    <Link to={`/${user?.username}`} >
+                        <Avatar />
+                    </Link>
                 </div>}
             </Stack>
-        </Stack>
+        </Stack >
     )
 }
 

@@ -1,6 +1,7 @@
-import React, { createContext, useState } from 'react'
+import React, { createContext, useEffect, useState } from 'react'
 import { auth } from '../config/firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import useGetUserById from '../hooks/useGetUserById';
 
 const AuthContext = createContext();
 
@@ -13,9 +14,31 @@ const AuthProvider = ({ children }) => {
         setMyUserDb(null)
     }
 
+    // useEffect(() => {
+    //     const fetchUser = async () => {
+    //         if (user) {
+    //             const userId = user.uid;
+
+    //             setMyUserDb(a);
+    //         } else {
+    //             setMyUserDb(null);
+    //         }
+    //     };
+
+    //     fetchUser();
+    // }, [user, a]);
+
+    const authContextValue = {
+        user: myUserDb,
+        logout: handleLogOut,
+        setMyUserDb
+    };
+
     return (
-        <div>AuthProvider</div>
+        <AuthContext.Provider value={authContextValue}>
+            {children}
+        </AuthContext.Provider>
     )
 }
 
-export default { AuthProvider, AuthContext }
+export { AuthProvider, AuthContext }

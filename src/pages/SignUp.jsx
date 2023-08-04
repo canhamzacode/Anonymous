@@ -1,12 +1,15 @@
 import { Box, Button, Typography } from '@mui/material'
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import authImage from "../assets/image/auth.jpg"
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useForm } from "react-hook-form"
+import { useAuthState } from 'react-firebase-hooks/auth';
 import * as yup from "yup"
 import { yupResolver } from "@hookform/resolvers/yup"
-import { auth } from '../config/firebase'
+import { auth, db } from '../config/firebase'
 import { createUserWithEmailAndPassword } from 'firebase/auth'
+import { collection, doc, getDoc, setDoc } from 'firebase/firestore'
+import { AuthContext } from '../providers/AuthProvider'
 
 
 const navBtn = {
@@ -19,6 +22,23 @@ const navBtn = {
 }
 
 const SignUp = () => {
+    const navigate = useNavigate()
+    const [user] = useAuthState(auth);
+    const usersRef = collection(db, 'userRef');
+    const { setMyUserDb, user: newOne } = useContext(AuthContext);
+
+    const checkUserExistence = async (userId) => {
+        try {
+            const userRef = doc(usersRef, userId);
+            const docData = await getDoc(userRef);
+            return docData.exists();
+        } catch (error) {
+            // Handle the error here
+            console.error("Error checking user existence:", error);
+            return false; // Assuming user doesn't exist in case of error
+        }
+    };
+
     const schema = yup.object().shape({
         email: yup.string().email("Invalid email format").required("This field is required"),
         username: yup.string().required("This field is required"),
@@ -35,10 +55,47 @@ const SignUp = () => {
             const userCredential = await createUserWithEmailAndPassword(auth, email, password);
             const user = userCredential.user;
             console.log('User created:', user);
+
+            if (user && user.uid) {
+                const authenticatedUserId = user.uid;
+
+                const isUserExisting = await checkUserExistence(authenticatedUserId);
+
+                if (isUserExisting) {
+                    alert("User Existed");
+                    // User exists in the database, navigate to the desired page
+                    navigate("/");
+                    return;
+                } else {
+                    // User schema doesn't exist, create the user schema and redirect
+                    alert("User never existed")
+                    const userData = {
+                        userId: authenticatedUserId,
+                        email: user.email,
+                        username: data.username,
+                    };
+
+                    // Create the user schema in Firestore
+                    await setDoc(doc(usersRef, authenticatedUserId), userData);
+
+                    // Update the user context or perform any other necessary actions
+                    setMyUserDb(userData);
+
+                    // Navigate to the desired page
+                    // navigate("/");
+                }
+            } else {
+                console.error("Error signing in with Google: User information not available.");
+            }
         } catch (error) {
             console.error('Error creating user:', error);
         }
     };
+
+    useEffect(() => {
+        console.log(user);
+        console.log(newOne);
+    }, [])
 
     return (
         <Box sx={{ display: "grid", gridTemplateColumns: { xs: "1fr", md: "1fr 1fr" }, padding: { md: "40px", xs: "20px" }, minHeight: "80vh", gap: "30px", alignItems: "center" }}>
