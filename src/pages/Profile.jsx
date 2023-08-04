@@ -3,11 +3,14 @@ import { Link, Navigate, useParams } from 'react-router-dom';
 import { AuthContext } from '../providers/AuthProvider';
 import useGetUserByUsername from '../hooks/useGetUserByUsername';
 import SameUser from '../components/SameUser';
+import ProfileNotFound from '../components/ProfileNotFound';
+import SaySomething from '../components/SaySomething';
 
 const Profile = () => {
     const { user } = useContext(AuthContext);
     const { id } = useParams();
     const [profileState, setProfileState] = useState('loading');
+    const [profileCheckComplete, setProfileCheckComplete] = useState(false);
 
     const userProfile = useGetUserByUsername(id);
 
@@ -20,22 +23,26 @@ const Profile = () => {
             } else {
                 setProfileState('not_exists');
             }
+
+            // Mark the profile check as complete
+            setProfileCheckComplete(true);
         };
 
         checkUserProfile();
     }, [id, user, userProfile]);
 
-    if (profileState === 'loading') {
+    // Render the loading state until the profile check is complete
+    if (!profileCheckComplete) {
         return <p>Loading...</p>;
-    } else if (profileState === 'logged') {
+    }
+
+    // Now, check the profile state and render the appropriate component
+    if (profileState === 'logged') {
         return <SameUser profile={userProfile} />;
     } else if (profileState === 'exists') {
-        // You can choose to render the SameUser component with the userProfile data.
-        // return <SameUser profile={userProfile} />;
-        return <p>User Profile Exists!</p>;
+        return <SaySomething name={id} />;
     } else {
-        // Render a component indicating that the profile doesn't exist.
-        return <p>User Profile Not Found</p>;
+        return <ProfileNotFound username={id} />;
     }
 };
 

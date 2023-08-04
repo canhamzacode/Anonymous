@@ -15,7 +15,7 @@ const navBtn = {
     fontWeight: "600"
 }
 
-const ProfileNotFound = () => {
+const ProfileNotFound = ({ username }) => {
     return (
         <Box sx={{ height: "80vh", display: "flex", alignItems: "center", overflow: "auto" }}>
             <Box sx={{ maxWidth: "650px", padding: "25px", marginX: "auto", background: "#fff", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", borderRadius: "20px", gap: "25px" }}>
@@ -27,10 +27,10 @@ const ProfileNotFound = () => {
                 </Typography>
                 <Box sx={{ paddingX: { md: "30px" }, textAlign: "center" }}>
                     <Typography variant='p'>
-                        There is no one with the username random_nck5aa. Try looking for any possible typos.
+                        There is no one with the username <span className='bg-black text-[#fff]'>{username}</span>. Try looking for any possible typos.
                     </Typography><br />
                     <Typography variant='p'>
-                        Or, you can get started by registering with the username random_nck5aa right now. Tap on "Register Now" button!
+                        Or, you can get started by registering with the username <span className='bg-black text-[#fff]'>{username}</span> right now. Tap on "Register Now" button!
                     </Typography>
                 </Box>
                 <Stack direction={"column"} sx={{ gap: "20px", display: "grid", width: "100%" }} >

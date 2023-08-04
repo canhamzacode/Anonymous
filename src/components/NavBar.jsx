@@ -3,6 +3,8 @@ import React, { useContext, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { AuthContext } from '../providers/AuthProvider'
 import PowerSettingsNewIcon from '@mui/icons-material/PowerSettingsNew';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { auth } from '../config/firebase';
 
 const navBtn = {
     background: "linear-gradient(90deg,#97a9d0,#fff)",
@@ -18,7 +20,6 @@ const navBtn = {
 const NavBar = () => {
     const { user, logout } = useContext(AuthContext);
     const signUserOut = async () => {
-        // toggle();
         logout();
         // navigate("/");
     }
@@ -50,10 +51,6 @@ const NavBar = () => {
                     <PowerSettingsNewIcon />
                 </Button>} */}
                 {user && <div className="profileImg" >
-                    {/* <img src={""} alt="profile" /> */}
-                    <Avatar />
-                </div>}
-                {<div className="profileImg" >
                     {/* <img src={""} alt="profile" /> */}
                     <Link to={`/${user?.username}`} >
                         <Avatar />

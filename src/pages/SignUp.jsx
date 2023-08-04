@@ -94,7 +94,6 @@ const SignUp = () => {
 
     useEffect(() => {
         console.log(user);
-        console.log(newOne);
     }, [])
 
     return (

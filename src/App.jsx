@@ -7,8 +7,6 @@ const Home = lazy(() => import("../src/pages/Home"));
 const Login = lazy(() => import("../src/pages/Login"));
 const SignUp = lazy(() => import("../src/pages/SignUp"));
 const Profile = lazy(() => import("../src/pages/Profile"));
-const SaySomething = lazy(() => import("../src/pages/SaySomething"));
-const ProfileNotFound = lazy(() => import("../src/pages/ProfileNotFound"));
 
 function App() {
 
@@ -37,22 +35,6 @@ function App() {
             element={
               <Suspense fallback={<Loading />}>
                 <SignUp />
-              </Suspense>
-            }
-          />
-          <Route
-            path="/some"
-            element={
-              <Suspense fallback={<Loading />}>
-                <SaySomething />
-              </Suspense>
-            }
-          />
-          <Route
-            path="/not"
-            element={
-              <Suspense fallback={<Loading />}>
-                <ProfileNotFound />
               </Suspense>
             }
           />

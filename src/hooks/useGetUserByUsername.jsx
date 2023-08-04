@@ -8,7 +8,7 @@ const useGetUserByUsername = (username) => {
     useEffect(() => {
         const fetchUser = async () => {
             try {
-                const usersRef = collection(db, 'users');
+                const usersRef = collection(db, 'userRef');
                 const querySnapshot = await getDocs(
                     query(usersRef, where('username', '==', username))
                 );

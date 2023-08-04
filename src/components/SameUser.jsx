@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Box, Button, Stack, Typography } from '@mui/material'
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import MessageIcon from '@mui/icons-material/Message';
@@ -6,18 +6,24 @@ import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import { Link, Navigate, useParams } from 'react-router-dom';
 
-const SameUser = () => {
+const SameUser = ({ profile }) => {
+    const currentURL = window.location.href;
+
+    const handleCopyClick = () => {
+        navigator.clipboard.writeText(window.location.href);
+        alert("Copied");
+    };
     return (
         <Box sx={{ height: "80vh", display: "flex", alignItems: "center" }}>
             <Box sx={{ maxWidth: "650px", padding: "25px", marginX: "auto", background: "#fff", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", borderRadius: "20px", gap: "25px" }}>
                 <Typography variant='h4'>
-                    Hamza Code's Profile
+                    {profile?.username}'s Profile
                 </Typography>
                 <Box sx={{ display: "flex", gap: "10px" }}>
                     <Typography variant='p'>
-                        https://gdpd.xyz/random_nck5
+                        {currentURL}
                     </Typography>
-                    <ContentCopyIcon sx={{ cursor: "pointer" }} />
+                    <ContentCopyIcon sx={{ cursor: "pointer" }} onClick={handleCopyClick} />
                 </Box>
                 <Box sx={{ paddingX: { md: "30px" }, textAlign: "center" }}>
                     <Typography variant='p'>

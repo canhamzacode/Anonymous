@@ -1,4 +1,6 @@
-import React, { createContext, useEffect, useState } from 'react'
+// providers/AuthProvider.js
+
+import React, { createContext, useEffect, useState } from 'react';
 import { auth } from '../config/firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import useGetUserById from '../hooks/useGetUserById';
@@ -7,26 +9,24 @@ const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
     const [user] = useAuthState(auth);
-    const [myUserDb, setMyUserDb] = useState(null)
+    const [myUserDb, setMyUserDb] = useState(null);
+    const userId = user?.uid;
+    let a = useGetUserById(userId);
+
+    // Fetch user data using the custom hook inside the functional component
+    const userData = useGetUserById(userId);
+
+    // When the user changes, update myUserDb state with the fetched user data
+    useEffect(() => {
+        setMyUserDb(userData);
+        console.log(myUserDb);
+        console.log(a);
+    }, [userData, a]);
 
     const handleLogOut = () => {
         auth.signOut();
-        setMyUserDb(null)
-    }
-
-    // useEffect(() => {
-    //     const fetchUser = async () => {
-    //         if (user) {
-    //             const userId = user.uid;
-
-    //             setMyUserDb(a);
-    //         } else {
-    //             setMyUserDb(null);
-    //         }
-    //     };
-
-    //     fetchUser();
-    // }, [user, a]);
+        setMyUserDb(null);
+    };
 
     const authContextValue = {
         user: myUserDb,
@@ -38,7 +38,7 @@ const AuthProvider = ({ children }) => {
         <AuthContext.Provider value={authContextValue}>
             {children}
         </AuthContext.Provider>
-    )
-}
+    );
+};
 
-export { AuthProvider, AuthContext }
+export { AuthProvider, AuthContext };
