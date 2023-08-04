@@ -31,13 +31,13 @@ const SameUser = ({ profile }) => {
                     </Typography>
                 </Box>
                 <Stack direction={"column"} sx={{ gap: "20px", display: "grid", width: "100%" }} >
-                    <Link to="/myMessages" className='w-full bg-black rounded-md'>
+                    <Link to="/messages" className='w-full bg-black rounded-md'>
                         <Button sx={{ color: "#fff", display: "flex", marginX: "auto", gap: "20px" }}  >
                             <span>View Messages</span>
                             <MessageIcon />
                         </Button>
                     </Link>
-                    <Link to="/myMessages" className='w-full bg-black rounded-md'>
+                    <Link to={`https://api.whatsapp.com/send?text=Write%20a%20*secret%20anonymous%20message*%20for%20me..%20%F0%9F%98%89%20I%20*won%27t%20know*%20who%20wrote%20it..%20%F0%9F%98%82%E2%9D%A4%20%F0%9F%91%89%20${currentURL}`} className='w-full bg-black rounded-md'>
                         <Button sx={{ color: "#fff", display: "flex", marginX: "auto", gap: "20px" }}  >
                             <span>Share On Whatsapp</span>
                             <WhatsAppIcon />

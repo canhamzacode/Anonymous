@@ -82,7 +82,7 @@ const SignUp = () => {
                     setMyUserDb(userData);
 
                     // Navigate to the desired page
-                    // navigate("/");
+                    navigate("/");
                 }
             } else {
                 console.error("Error signing in with Google: User information not available.");
