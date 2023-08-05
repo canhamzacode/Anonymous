@@ -26,7 +26,7 @@ const Profile = ({ name, email }) => {
     const form = useRef();
 
     const sendForm = (content) => {
-        let linkURL = `http://localhost:5173/${name}`
+        let linkURL = `https://noface.vercel.app/${name}`
         const templateParams = {
             to_email: email, // Email address of the recipient
             from_name: 'NoFace', // Your website or app name
@@ -73,11 +73,11 @@ const Profile = ({ name, email }) => {
                 linkOwner: name,
             };
             sendForm(data.content)
+            alert("Sucessfully Created")
             navigate("/login")
             // console.log(commentData);
             await addDoc(commentRef, commentData);
             reset()
-            alert("Sucessfully Created")
         } catch (error) {
             console.error('Error creating post:', error);
             setError('Failed to create post');

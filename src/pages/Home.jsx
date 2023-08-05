@@ -29,7 +29,8 @@ const Home = () => {
                 </Box>
                 <Box sx={{
                     display: "grid",
-                    gap: "10px"
+                    gap: "10px",
+                    width: "100%",
                 }}>
                     <Typography variant='h1' sx={{ fontSize: "40px", }}>
                         NoFace
@@ -39,9 +40,11 @@ const Home = () => {
                     }}>
                         Express your opinions about various topics, and even have the opportunity to confess your feelings to your crush or admirer without revealing your identity. Receive responses from others in a fun and confidential way.
                     </Typography> <br />
-                    <Button sx={navBtn}>
-                        Get Started
-                    </Button>
+                    {<Link to="/login" className='w-full'>
+                        <Button sx={navBtn} className='w-full'>
+                            Get Started
+                        </Button>
+                    </Link>}
                 </Box>
             </Stack>
             <Box sx={{
