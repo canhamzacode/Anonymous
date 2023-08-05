@@ -16,18 +16,19 @@ const Profile = () => {
 
     useEffect(() => {
         const checkUserProfile = async () => {
-            if (user && id === user.username) {
-                setProfileState('logged');
-            } else if (userProfile) {
-                setProfileState('exists');
-            } else {
-                setProfileState('not_exists');
+            const data = () => {
+                if (user && id === user.username) {
+                    setProfileState('logged');
+                } else if (userProfile) {
+                    setProfileState('exists');
+                } else {
+                    setProfileState('not_exists');
+                }
             }
-
+            data();
             // Mark the profile check as complete
             setProfileCheckComplete(true);
         };
-
         checkUserProfile();
     }, [id, user, userProfile]);
 
@@ -40,7 +41,7 @@ const Profile = () => {
     if (profileState === 'logged') {
         return <SameUser profile={userProfile} />;
     } else if (profileState === 'exists') {
-        return <SaySomething name={id} />;
+        return <SaySomething name={id} email={userProfile.email} />;
     } else {
         return <ProfileNotFound username={id} />;
     }

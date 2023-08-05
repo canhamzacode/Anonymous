@@ -3,6 +3,8 @@ import React, { lazy, Suspense } from "react";
 import Layout from "./Layout"
 import Loading from "./components/Loading";
 import { AuthProvider } from "./providers/AuthProvider";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "./config/firebase";
 const Home = lazy(() => import("../src/pages/Home"));
 const Login = lazy(() => import("../src/pages/Login"));
 const SignUp = lazy(() => import("../src/pages/SignUp"));
@@ -10,6 +12,7 @@ const Profile = lazy(() => import("../src/pages/Profile"));
 const Messages = lazy(() => import("../src/pages/Messages"));
 
 function App() {
+  const [user] = useAuthState(auth);
 
   return (
     <AuthProvider>
@@ -39,14 +42,14 @@ function App() {
               </Suspense>
             }
           />
-          <Route
+          {user && <Route
             path="/messages"
             element={
               <Suspense fallback={<Loading />}>
                 <Messages />
               </Suspense>
             }
-          />
+          />}
           <Route
             path="/:id"
             element={

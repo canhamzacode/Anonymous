@@ -30,7 +30,7 @@ const NavBar = () => {
         <Stack direction={"row"} sx={{ display: "flex", alignItems: "center", justifyContent: "space-between", width: "100%", padding: { xs: "20px", md: "20px 40px" }, background: "#a2b4db" }}>
             <Link to="/">
                 <Typography variant='h1' sx={{ fontSize: "30px", }}>
-                    Annonymous
+                    NoFace
                 </Typography>
             </Link>
             <Stack direction={"row"} sx={{ display: "flex", alignItems: "center", gap: { md: "50px", xs: "20px" }, }}>

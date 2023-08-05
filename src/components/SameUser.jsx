@@ -43,12 +43,12 @@ const SameUser = ({ profile }) => {
                             <WhatsAppIcon />
                         </Button>
                     </Link>
-                    <Link to="/myMessages" className='w-full bg-black rounded-md'>
+                    {/* <Link to="/myMessages" className='w-full bg-black rounded-md'>
                         <Button sx={{ color: "#fff", display: "flex", marginX: "auto", gap: "20px" }}  >
                             <span>Share On Twitter </span>
                             <TwitterIcon />
                         </Button>
-                    </Link>
+                    </Link> */}
                 </Stack>
             </Box>
         </Box>

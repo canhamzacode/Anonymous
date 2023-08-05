@@ -32,7 +32,7 @@ const Home = () => {
                     gap: "10px"
                 }}>
                     <Typography variant='h1' sx={{ fontSize: "40px", }}>
-                        Annonymous
+                        NoFace
                     </Typography>
                     <Typography variant='p' sx={{
                         fontSize: "20px",

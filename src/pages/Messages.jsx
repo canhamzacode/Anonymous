@@ -1,8 +1,37 @@
 import { Box, Stack, Typography } from '@mui/material'
 import TipsAndUpdatesIcon from '@mui/icons-material/TipsAndUpdates';
 import React from 'react'
+import { collection, getDocs } from 'firebase/firestore';
+import { db } from '../config/firebase';
+import { useEffect, useState, useMemo } from 'react';
 
 const Messages = () => {
+    const [comments, setComments] = useState("")
+    const getAllComments = async () => {
+        try {
+            const commentCollection = collection(db, 'comment');
+            const commentsSnapshot = await getDocs(commentCollection);
+
+            const stories = [];
+            commentsSnapshot.forEach((doc) => {
+                const { storyData, ...data } = doc.data();
+                const story = { id: doc.id, ...data };
+                stories.push(story);
+            });
+
+
+            setComments(stories);
+            console.log(comments);
+        } catch (error) {
+            console.error('Error fetching stories:', error);
+        }
+    };
+
+    useEffect(() => {
+        getAllComments();
+    }, []);
+
+    const memoizedComments = useMemo(() => comments, [comments]);
     return (
         <Box sx={{ display: "flex", flexDirection: "column", padding: { md: "40px", xs: "20px" }, minHeight: "80vh", gap: "30px" }}>
             <Stack direction="column" sx={{ width: "100%", background: "", gap: "10px" }}>
