@@ -35,7 +35,7 @@ const Messages = () => {
         getUserComments();
     }, [user]);
 
-    console.log('User Comments:', userComments);
+    // console.log('User Comments:', userComments);
 
     return (
         <Box sx={{ display: "flex", flexDirection: "column", padding: { md: "40px", xs: "20px" }, minHeight: "80vh", gap: "30px" }}>
@@ -44,12 +44,12 @@ const Messages = () => {
             </Typography>
             {userComments.length > 0 ? userComments.map((comment) => (
                 <Stack key={comment?.id} direction="column" sx={{ width: "100%", background: "", gap: "10px" }}>
-                    <Box sx={{ width: "100%", padding: "10px", background: "#fff", borderRadius: "5px", display: "grid", alignItems: "center" }}>
+                    <Box sx={{ width: "100%", padding: "0 10px", background: "#fff", borderRadius: "5px", display: "grid", alignItems: "center" }}>
                         <Box sx={{ width: "100%", padding: "10px", background: "#fff", borderRadius: "5px", display: "flex", alignItems: "center", gap: "25px" }}>
                             <Box sx={{ width: "60px", height: "60px", background: "#000", padding: "10px", borderRadius: "5px", display: { xs: "none", md: "flex" } }}>
                                 <TipsAndUpdatesIcon sx={{ fontSize: "40px", color: "#fff" }} />
                             </Box>
-                            <Typography variant='p'>
+                            <Typography variant='h6'>
                                 {comment?.content}
                             </Typography>
                         </Box>

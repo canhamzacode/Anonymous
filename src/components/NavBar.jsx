@@ -23,9 +23,6 @@ const NavBar = () => {
         logout();
         // navigate("/");
     }
-    useEffect(() => {
-        console.log(user);
-    }, [])
     return (
         <Stack direction={"row"} sx={{ display: "flex", alignItems: "center", justifyContent: "space-between", width: "100%", padding: { xs: "20px", md: "20px 40px" }, background: "#a2b4db" }}>
             <Link to="/">

@@ -19,8 +19,8 @@ const AuthProvider = ({ children }) => {
     // When the user changes, update myUserDb state with the fetched user data
     useEffect(() => {
         setMyUserDb(userData);
-        console.log(myUserDb);
-        console.log(a);
+        // console.log(myUserDb);
+        // console.log(a);
     }, [userData, a]);
 
     const handleLogOut = () => {

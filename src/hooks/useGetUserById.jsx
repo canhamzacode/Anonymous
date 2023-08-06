@@ -10,7 +10,7 @@ const useGetUserById = (userId) => {
     useEffect(() => {
         const fetchUser = async () => {
             try {
-                console.log('Fetching user with ID:', userId);
+                // console.log('Fetching user with ID:', userId);
                 const usersRef = collection(db, 'userRef');
                 const querySnapshot = await getDocs(query(usersRef, where('userId', '==', userId)));
 
@@ -18,7 +18,7 @@ const useGetUserById = (userId) => {
                     // User found, set the user data
                     const userDoc = querySnapshot.docs[0];
                     const userData = userDoc.data();
-                    console.log('User data:', userData);
+                    // console.log('User data:', userData);
                     setUser(userData);
                 } else {
                     // User not found, set user data to null
