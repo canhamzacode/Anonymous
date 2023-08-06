@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import CategoriesCard from "./CategoriesCard";
 import Anonymous2 from "../assets/image/Anonymous2.jpg"
 import download1 from "../assets/image/download1.jpg"
@@ -30,21 +30,39 @@ const categories = [
     },
 ];
 const TopCategories = () => {
+    const parentRef = useRef(null);
+
+    useEffect(() => {
+        const scrollContainer = parentRef.current;
+        let scrollAmount = 0;
+        const maxScroll = scrollContainer.scrollWidth - scrollContainer.clientWidth;
+
+        const scroll = () => {
+            scrollAmount++;
+            if (scrollAmount > maxScroll) {
+                scrollAmount = 0;
+            }
+            scrollContainer.scrollLeft = scrollAmount;
+        };
+
+        const scrollInterval = setInterval(scroll, 20);
+
+        return () => clearInterval(scrollInterval);
+    }, []);
 
     return (
         <Box className=" w-full  py-5 categriesHeader">
-            <Box sx={{ marginX: "auto", maxWidth: "600px", textAlign: "center" }}>
+            <Box sx={{ marginX: "auto", maxWidth: "600px", textAlign: "center", color: "#fff" }}>
                 <Typography variant="h4" sx={{ textAlign: "center", padding: "10px", marginTop: "20px" }}>
                     Why Us?
                 </Typography>
-                <Typography variant='p' sx={{
+                <Typography variant='h6' sx={{
                     fontSize: "20px",
-                    fontWeight: "500"
                 }}>
                     Our Anonymous Messaging App comes along with many great features. Here we are going to list some of them. Have a look below.
                 </Typography>
-            </Box>
-            <Box className="w-full flex items-start pt-3 overflow-x-auto gap-8 custom-bar">
+            </Box><br />
+            <Box className="w-full flex items-start pt-3 overflow-x-auto gap-8 custom-bar" ref={parentRef}>
                 {categories.map((category, key) => {
                     return (
                         <CategoriesCard

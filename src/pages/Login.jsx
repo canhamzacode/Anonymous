@@ -11,7 +11,7 @@ import { auth } from '../config/firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 
 const navBtn = {
-    background: "linear-gradient(90deg,#97a9d0,#fff)",
+    background: "linear-gradient(90deg,#463f3a,#bcb8b1)",
     color: "black",
     borderRadius: "15px",
     padding: "10px 20px",

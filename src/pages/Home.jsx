@@ -7,7 +7,7 @@ import download3 from "../assets/image/download3.jpg"
 
 const navBtn = {
     // background: "linear-gradient(90deg,#ffce6d,#fdc962,#fcc456,#fabe4a,#f8b93d)",
-    background: "linear-gradient(90deg,#97a9d0,#fff)",
+    background: "linear-gradient(90deg,#463f3a,#bcb8b1)",
     color: "black",
     borderRadius: "15px",
     padding: "10px 20px",
@@ -51,7 +51,8 @@ const Home = () => {
                 display: "flex",
                 alignItems: "center",
                 padding: { xs: "20px", md: "40px" },
-                background: "#a2b4db"
+                // background: "#e0afa0"
+                background: "#463f3a"
             }}>
                 <TopCategories />
             </Box>

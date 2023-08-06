@@ -14,7 +14,7 @@ import { AuthContext } from '../providers/AuthProvider'
 
 const navBtn = {
     // background: "linear-gradient(90deg,#ffce6d,#fdc962,#fcc456,#fabe4a,#f8b93d)",
-    background: "linear-gradient(90deg,#97a9d0,#fff)",
+    background: "linear-gradient(90deg,#463f3a,#bcb8b1)",
     color: "black",
     borderRadius: "15px",
     padding: "10px 20px",

@@ -7,14 +7,10 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../config/firebase';
 
 const navBtn = {
-    background: "linear-gradient(90deg,#97a9d0,#fff)",
+    background: "linear-gradient(90deg,#463f3a,#bcb8b1)",
     color: "black",
     borderRadius: "15px",
     padding: "10px 20px",
-    ":hover": {
-        background: "linear-gradient(90deg,#fff,#97a9d0)",
-        borderRadius: "8px"
-    },
     fontWeight: "600"
 }
 const NavBar = () => {
@@ -24,7 +20,8 @@ const NavBar = () => {
         // navigate("/");
     }
     return (
-        <Stack direction={"row"} sx={{ display: "flex", alignItems: "center", justifyContent: "space-between", width: "100%", padding: { xs: "20px", md: "20px 40px" }, background: "#a2b4db" }}>
+        // <Stack direction={"row"} sx={{ display: "flex", alignItems: "center", justifyContent: "space-between", width: "100%", padding: { xs: "20px", md: "20px 40px" }, background: "#fffaff" }}>
+        <Stack direction={"row"} sx={{ display: "flex", alignItems: "center", justifyContent: "space-between", width: "100%", padding: { xs: "20px", md: "20px 40px" }, background: "#bcb8b1" }}>
             <Link to="/">
                 <Typography variant='h1' sx={{ fontSize: "30px", }}>
                     NoFace

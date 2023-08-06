@@ -1,5 +1,5 @@
 import { Box, Button, Stack, Typography } from '@mui/material'
-import React, { useRef, useState } from 'react'
+import React, { useContext, useRef, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
@@ -7,6 +7,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { addDoc, collection } from 'firebase/firestore';
 import { db } from '../config/firebase';
 import emailjs from '@emailjs/browser';
+import { AuthContext } from '../providers/AuthProvider';
 
 const navBtn = {
     background: "linear-gradient(90deg,#97a9d0,#fff)",
@@ -22,6 +23,7 @@ const navBtn = {
 }
 
 const Profile = ({ name, email }) => {
+    const { user } = useContext(AuthContext);
     const navigate = useNavigate()
     const form = useRef();
 
@@ -75,7 +77,10 @@ const Profile = ({ name, email }) => {
             };
             sendForm(data.content)
             alert("Sucessfully Created")
-            navigate("/login")
+            if (!user) {
+                navigate("/login")
+            }
+            navigate(`/${user.username}`)
             // console.log(commentData);
             await addDoc(commentRef, commentData);
             reset()
