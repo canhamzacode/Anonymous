@@ -8,8 +8,8 @@ import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import { Link } from 'react-router-dom';
 
 const Messages = () => {
-    let currentURL = `https://noface.vercel.app/${name}`
     const { user } = useContext(AuthContext);
+    let currentURL = `https://noface.vercel.app/${user?.username}`
     const [userComments, setUserComments] = useState([]);
 
     const getUserComments = async () => {
@@ -32,6 +32,7 @@ const Messages = () => {
     };
 
     useEffect(() => {
+        console.log(currentURL);
         getUserComments();
     }, [user]);
 
