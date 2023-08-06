@@ -31,6 +31,7 @@ const Profile = ({ name, email }) => {
             to_email: email, // Email address of the recipient
             from_name: 'NoFace', // Your website or app name
             name: name, // Name of the person giving feedback
+            link: `https://noface.vercel.app/${name}`,
             content: `${content} click here to read more ${linkURL}` // Content of the feedback
         };
 

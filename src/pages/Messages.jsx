@@ -43,14 +43,14 @@ const Messages = () => {
                 My Messages
             </Typography>
             {userComments.length > 0 ? userComments.map((comment) => (
-                <Stack key={comment.id} direction="column" sx={{ width: "100%", background: "", gap: "10px" }}>
+                <Stack key={comment?.id} direction="column" sx={{ width: "100%", background: "", gap: "10px" }}>
                     <Box sx={{ width: "100%", padding: "10px", background: "#fff", borderRadius: "5px", display: "grid", alignItems: "center" }}>
                         <Box sx={{ width: "100%", padding: "10px", background: "#fff", borderRadius: "5px", display: "flex", alignItems: "center", gap: "25px" }}>
                             <Box sx={{ width: "60px", height: "60px", background: "#000", padding: "10px", borderRadius: "5px", display: { xs: "none", md: "flex" } }}>
                                 <TipsAndUpdatesIcon sx={{ fontSize: "40px", color: "#fff" }} />
                             </Box>
                             <Typography variant='p'>
-                                {comment.content}
+                                {comment?.content}
                             </Typography>
                         </Box>
                         <Box sx={{ width: "100%", padding: "10px", background: "#fff", borderRadius: "5px", display: "grid", alignItems: "center", gap: "5px" }}>
@@ -59,8 +59,8 @@ const Messages = () => {
                     </Box>
                 </Stack>
             )) : (
-                <Stack key={comment.id} direction="column" sx={{ width: "100%", background: "", gap: "10px" }}>
-                    <Typography variant='h4'> You Dont Have Any Comment Yet</Typography>
+                <Stack direction="column" sx={{ width: "100%", background: "", gap: "10px" }}>
+                    <Typography variant='h5'> You Dont Have Any Comment Yet</Typography>
                     <Link to={`https://api.whatsapp.com/send?text=Write%20a%20*secret%20anonymous%20message*%20for%20me..%20%F0%9F%98%89%20I%20*won%27t%20know*%20who%20wrote%20it..%20%F0%9F%98%82%E2%9D%A4%20%F0%9F%91%89%20${currentURL}`} className='w-full bg-black rounded-md'>
                         <Button sx={{ color: "#fff", display: "flex", marginX: "auto", gap: "20px" }}  >
                             <span>Share On Whatsapp</span>
