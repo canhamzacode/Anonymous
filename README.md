@@ -1,8 +1,3 @@
-# React + Vite
+# No Face
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Anonymously share your thoughts and feelings on a web-app. Express your opinions about various topics, and even have the opportunity to confess your feelings to your crush or admirer without revealing your identity. Receive responses from others in a fun and confidential way
