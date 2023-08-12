@@ -1,5 +1,5 @@
-import { Box, Button, Typography } from '@mui/material'
-import React, { useContext, useEffect } from 'react'
+import { Box, Button, IconButton, Typography } from '@mui/material'
+import React, { useContext, useEffect, useState } from 'react'
 import authImage from "../assets/image/auth.jpg"
 import { Link, useNavigate } from 'react-router-dom'
 import { useForm } from "react-hook-form"
@@ -10,6 +10,8 @@ import { auth, db } from '../config/firebase'
 import { createUserWithEmailAndPassword } from 'firebase/auth'
 import { collection, doc, getDoc, setDoc } from 'firebase/firestore'
 import { AuthContext } from '../providers/AuthProvider'
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 
 
 const navBtn = {
@@ -26,6 +28,12 @@ const SignUp = () => {
     const [user] = useAuthState(auth);
     const usersRef = collection(db, 'userRef');
     const { setMyUserDb, user: newOne } = useContext(AuthContext);
+    const [passwordVisible, setPasswordVisible] = useState(false);
+
+
+    const togglePasswordVisibility = () => {
+        setPasswordVisible((prevState) => !prevState);
+    };
 
     const checkUserExistence = async (userId) => {
         try {
@@ -113,14 +121,29 @@ const SignUp = () => {
                         <input type="text" placeholder='Username' className='p-2' {...register('username')} />
                         {errors.username && <Typography variant='p' sx={{ color: "red" }}>{errors.email.message}</Typography>}
                         <label htmlFor="username" className='text-2xl'>Password</label>
-                        <input type="password" placeholder='Password' className='p-2' {...register('password')} />
+                        <Box sx={{
+                            display: "flex",
+                            justifyContent: "space-between",
+                            gap: "10px",
+                            width: "100%"
+                        }}>
+                            <input
+                                type={passwordVisible ? 'text' : 'password'}
+                                placeholder='Password'
+                                className='p-2 w-[90%]'
+                                {...register('password')}
+                            />
+                            <IconButton onClick={togglePasswordVisibility}>
+                                {passwordVisible ? <VisibilityIcon /> : <VisibilityOffIcon />}
+                            </IconButton>
+                        </Box>
                         {errors.password && <Typography variant='p' sx={{ color: "red" }}>{errors.password.message}</Typography>}
                         <Button type='submit' sx={navBtn}>
                             Sign Up
                         </Button>
                     </form>
                     <Typography variant='p'>
-                        Don't have an Account? <Link className='text-[#fff] font-bold' to={"/login"}>
+                        Don't have an Account? <Link className='text-[#fff] bg-black font-bold' to={"/login"}>
                             Login
                         </Link>
                     </Typography>

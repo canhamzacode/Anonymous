@@ -62,7 +62,7 @@ const TopCategories = () => {
                     Our Anonymous Messaging App comes along with many great features. Here we are going to list some of them. Have a look below.
                 </Typography>
             </Box><br />
-            <Box className="w-full flex items-start pt-3 overflow-x-auto gap-8 custom-bar" ref={parentRef}>
+            <Box className="w-full flex items-start pt-3 overflow-x-hidden gap-8 custom-bar" ref={parentRef}>
                 {categories.map((category, key) => {
                     return (
                         <CategoriesCard
