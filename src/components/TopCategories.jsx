@@ -26,7 +26,7 @@ const categories = [
     {
         image: download3,
         title: "Easy 2 Use",
-        description: "We are constantly working on Kubool as a platform to make it as user friendly as possible. As of now you can just download our app, fill in your username & pass to get started.",
+        description: "We are constantly working on NoFace as a platform to make it as user friendly as possible.",
     },
 ];
 const TopCategories = () => {
