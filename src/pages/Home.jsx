@@ -1,9 +1,10 @@
 import { Box, Button, Stack, Typography } from '@mui/material'
-import React from 'react'
+import React, { useContext } from 'react'
 import annonymous1 from "../assets/image/annonymous1.png"
 import { Link } from 'react-router-dom'
 import TopCategories from '../components/TopCategories'
 import download3 from "../assets/image/download3.jpg"
+import { AuthContext } from '../providers/AuthProvider'
 
 const navBtn = {
     background: "transparent",
@@ -14,6 +15,7 @@ const navBtn = {
 }
 
 const Home = () => {
+    const { user, logout } = useContext(AuthContext);
     return (
         <Box sx={{ width: "100%", }}>
             <Stack sx={{
@@ -40,9 +42,14 @@ const Home = () => {
                     }}>
                         Express your opinions about various topics, and even have the opportunity to confess your feelings to your crush or admirer without revealing your identity. Receive responses from others in a fun and confidential way.
                     </Typography> <br />
-                    {<Link to="/login" className='w-full'>
+                    {!user && <Link to="/login" className='w-full'>
                         <Button sx={navBtn} className='w-full'>
                             Get Started
+                        </Button>
+                    </Link>}
+                    {user && <Link to={`/${user.username}`} className='w-full'>
+                        <Button sx={navBtn} className='w-full'>
+                            My Profile
                         </Button>
                     </Link>}
                 </Box>
