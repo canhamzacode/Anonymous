@@ -104,19 +104,19 @@ const SignUp = () => {
         <Box sx={{ display: "grid", gridTemplateColumns: { xs: "1fr", md: "1fr 1fr" }, padding: { md: "40px", xs: "20px" }, minHeight: "80vh", gap: "30px", alignItems: "center" }}>
             <Box sx={{ display: "flex", flexDirection: "column", gap: "20px" }}>
                 <Box>
-                    <Typography variant='h4'>
+                    <Typography variant='h4' sx={{ color: "#fff" }} >
                         Sign Up
                     </Typography>
                 </Box>
                 <Box sx={{ padding: " 0", display: "grid", gap: "10px" }}>
                     <form className='grid gap-3' onSubmit={handleSubmit(onCreateAccount)} >
-                        <label htmlFor="email" className='text-2xl'>Email</label>
+                        <label htmlFor="email" className='text-2xl text-[#fff]'>Email</label>
                         <input type="email" placeholder='Email' className='p-2' {...register('email')} />
                         {errors.email && <Typography variant='p' sx={{ color: "red" }}>{errors.email.message}</Typography>}
-                        <label htmlFor="username" className='text-2xl'>Username</label>
+                        <label htmlFor="username" className='text-2xl text-[#fff]'>Username</label>
                         <input type="text" placeholder='Username' className='p-2' {...register('username')} />
                         {errors.username && <Typography variant='p' sx={{ color: "red" }}>{errors.email.message}</Typography>}
-                        <label htmlFor="username" className='text-2xl'>Password</label>
+                        <label htmlFor="username" className='text-2xl text-[#fff]'>Password</label>
                         <Box sx={{
                             display: "flex",
                             justifyContent: "space-between",
