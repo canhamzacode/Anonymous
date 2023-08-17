@@ -6,12 +6,11 @@ import TopCategories from '../components/TopCategories'
 import download3 from "../assets/image/download3.jpg"
 
 const navBtn = {
-    // background: "linear-gradient(90deg,#ffce6d,#fdc962,#fcc456,#fabe4a,#f8b93d)",
-    background: "linear-gradient(90deg,#463f3a,#bcb8b1)",
-    color: "black",
-    borderRadius: "15px",
+    background: "transparent",
+    color: "#fff",
     padding: "10px 20px",
-    fontWeight: "600"
+    fontWeight: "600",
+    border: "1px solid white"
 }
 
 const Home = () => {
@@ -32,11 +31,12 @@ const Home = () => {
                     gap: "10px",
                     width: "100%",
                 }}>
-                    <Typography variant='h1' sx={{ fontSize: "40px", }}>
+                    <Typography variant='h1' sx={{ fontSize: "40px", color: "#fff" }}>
                         NoFace
                     </Typography>
                     <Typography variant='p' sx={{
                         fontSize: "20px",
+                        color: "#fff"
                     }}>
                         Express your opinions about various topics, and even have the opportunity to confess your feelings to your crush or admirer without revealing your identity. Receive responses from others in a fun and confidential way.
                     </Typography> <br />
@@ -52,7 +52,7 @@ const Home = () => {
                 alignItems: "center",
                 padding: { xs: "20px", md: "40px" },
                 // background: "#e0afa0"
-                background: "#463f3a"
+                background: "#1f242126"
             }}>
                 <TopCategories />
             </Box>
