@@ -14,12 +14,12 @@ import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 
 
 const navBtn = {
-    background: "linear-gradient(90deg,#463f3a,#bcb8b1)",
-    color: "black",
-    borderRadius: "15px",
+    background: "transparent",
+    color: "#fff",
     padding: "10px 20px",
     fontWeight: "600",
-};
+    border: "1px solid white"
+}
 
 const Login = () => {
     const navigate = useNavigate()
@@ -100,7 +100,6 @@ const Login = () => {
                         <Box sx={{
                             display: "flex",
                             justifyContent: "space-between",
-                            gap: "10px",
                             width: "100%"
                         }}>
                             <input
@@ -109,8 +108,8 @@ const Login = () => {
                                 className='p-2 w-[90%]'
                                 {...register('password')}
                             />
-                            <IconButton onClick={togglePasswordVisibility}>
-                                {passwordVisible ? <VisibilityIcon /> : <VisibilityOffIcon />}
+                            <IconButton onClick={togglePasswordVisibility} sx={{ width: "10%", }}>
+                                {passwordVisible ? <VisibilityIcon sx={{ color: "#fff" }} /> : <VisibilityOffIcon sx={{ color: "#fff" }} />}
                             </IconButton>
                         </Box>
                         {errors.password && <Typography variant='p' sx={{ color: 'red' }}>{errors.password.message}</Typography>}
@@ -121,9 +120,8 @@ const Login = () => {
                             {loading ? 'Logging in...' : 'Login'}
                         </Button>
                     </form>
-
-                    <Typography variant='p'>
-                        Don't have an Account? <Link className='text-[#fff] font-bold bg-black' to={"/signup"}>
+                    <Typography variant='p' sx={{ color: "#fff" }}>
+                        Don't have an Account? <Link className='text-[#000] bg-white font-bold' to={"/signup"}>
                             Sign Up
                         </Link>
                     </Typography>

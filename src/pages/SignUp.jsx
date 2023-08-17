@@ -15,12 +15,11 @@ import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 
 
 const navBtn = {
-    // background: "linear-gradient(90deg,#ffce6d,#fdc962,#fcc456,#fabe4a,#f8b93d)",
-    background: "linear-gradient(90deg,#463f3a,#bcb8b1)",
-    color: "black",
-    borderRadius: "15px",
+    background: "transparent",
+    color: "#fff",
     padding: "10px 20px",
-    fontWeight: "600"
+    fontWeight: "600",
+    border: "1px solid white"
 }
 
 const SignUp = () => {
@@ -100,9 +99,6 @@ const SignUp = () => {
         }
     };
 
-    useEffect(() => {
-        console.log(user);
-    }, [])
 
     return (
         <Box sx={{ display: "grid", gridTemplateColumns: { xs: "1fr", md: "1fr 1fr" }, padding: { md: "40px", xs: "20px" }, minHeight: "80vh", gap: "30px", alignItems: "center" }}>
@@ -124,7 +120,6 @@ const SignUp = () => {
                         <Box sx={{
                             display: "flex",
                             justifyContent: "space-between",
-                            gap: "10px",
                             width: "100%"
                         }}>
                             <input
@@ -133,8 +128,8 @@ const SignUp = () => {
                                 className='p-2 w-[90%]'
                                 {...register('password')}
                             />
-                            <IconButton onClick={togglePasswordVisibility}>
-                                {passwordVisible ? <VisibilityIcon /> : <VisibilityOffIcon />}
+                            <IconButton onClick={togglePasswordVisibility} sx={{ width: "10%" }}>
+                                {passwordVisible ? <VisibilityIcon sx={{ color: "#fff" }} /> : <VisibilityOffIcon sx={{ color: "#fff" }} />}
                             </IconButton>
                         </Box>
                         {errors.password && <Typography variant='p' sx={{ color: "red" }}>{errors.password.message}</Typography>}
@@ -142,8 +137,8 @@ const SignUp = () => {
                             Sign Up
                         </Button>
                     </form>
-                    <Typography variant='p'>
-                        Don't have an Account? <Link className='text-[#fff] bg-black font-bold' to={"/login"}>
+                    <Typography variant='p' sx={{ color: "#fff" }}>
+                        Registered already ? <Link className='text-[#000] bg-white font-bold' to={"/login"}>
                             Login
                         </Link>
                     </Typography>
