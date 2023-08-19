@@ -69,13 +69,11 @@ const SignUp = () => {
                 const isUserExisting = await checkUserExistence(authenticatedUserId);
 
                 if (isUserExisting) {
-                    alert("User Existed");
                     // User exists in the database, navigate to the desired page
-                    navigate("/");
+                    navigate(`/${user.username}`);
                     return;
                 } else {
                     // User schema doesn't exist, create the user schema and redirect
-                    alert("User never existed")
                     const userData = {
                         userId: authenticatedUserId,
                         email: user.email,
@@ -89,7 +87,7 @@ const SignUp = () => {
                     setMyUserDb(userData);
 
                     // Navigate to the desired page
-                    navigate("/");
+                    navigate(`/${user.username}`);
                 }
             } else {
                 console.error("Error signing in with Google: User information not available.");
