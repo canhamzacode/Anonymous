@@ -40,7 +40,7 @@ const Messages = () => {
 
     return (
         <Box sx={{ display: "flex", flexDirection: "column", padding: { md: "40px", xs: "20px" }, minHeight: "80vh", gap: "30px" }}>
-            <Typography variant='h4' sx={{ fontSize: "30px" }}>
+            <Typography variant='h4' sx={{ fontSize: "30px", color: "#fff" }}>
                 My Messages
             </Typography>
             {userComments.length > 0 ? userComments.map((comment) => (

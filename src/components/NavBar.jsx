@@ -23,7 +23,7 @@ const NavBar = () => {
         // <Stack direction={"row"} sx={{ display: "flex", alignItems: "center", justifyContent: "space-between", width: "100%", padding: { xs: "20px", md: "20px 40px" }, background: "#fffaff" }}>
         <Stack direction={"row"} sx={{
             display: "flex", alignItems: "center", justifyContent: "space-between", width: "100%", padding: { xs: "20px", md: "20px 40px" },
-            background: "#1f242126",
+            background: "#282a30",
         }}>
             <Link to="/">
                 <Typography variant='h1' sx={{ fontSize: "30px", color: "#fff" }}>

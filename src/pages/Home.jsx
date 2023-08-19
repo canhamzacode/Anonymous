@@ -59,7 +59,7 @@ const Home = () => {
                 alignItems: "center",
                 padding: { xs: "20px", md: "40px" },
                 // background: "#e0afa0"
-                background: "#1f242126"
+                background: "#282a30"
             }}>
                 <TopCategories />
             </Box>
