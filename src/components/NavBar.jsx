@@ -26,7 +26,7 @@ const NavBar = () => {
             background: "#282a30",
         }}>
             <Link to="/">
-                <Typography variant='h1' sx={{ fontSize: "30px", color: "#fff" }}>
+                <Typography variant='h1' sx={{ fontSize: "30px", color: "#fff", fontWeight: "800" }}>
                     NoFace
                 </Typography>
             </Link>
