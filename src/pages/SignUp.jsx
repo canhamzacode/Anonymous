@@ -70,7 +70,8 @@ const SignUp = () => {
 
                 if (isUserExisting) {
                     // User exists in the database, navigate to the desired page
-                    navigate(`/${user.username}`);
+                    alert("Account Created Sucessfully")
+                    navigate(`/`);
                     return;
                 } else {
                     // User schema doesn't exist, create the user schema and redirect
@@ -85,9 +86,10 @@ const SignUp = () => {
 
                     // Update the user context or perform any other necessary actions
                     setMyUserDb(userData);
+                    alert("Account Created Sucessfully")
 
                     // Navigate to the desired page
-                    navigate(`/${user.username}`);
+                    navigate(`/`);
                 }
             } else {
                 console.error("Error signing in with Google: User information not available.");
