@@ -23,6 +23,7 @@ const navBtn = {
 }
 
 const Profile = ({ name, email }) => {
+    const [signUp, setSignUp] = useState(false)
     const { user } = useContext(AuthContext);
     const navigate = useNavigate()
     const form = useRef();
@@ -76,9 +77,9 @@ const Profile = ({ name, email }) => {
                 linkOwner: name,
             };
             sendForm(data.content)
-            alert("Sucessfully Created")
             if (!user) {
-                navigate("/login")
+                alert("Sucessfully Created ");
+                setSignUp(true);
             }
             navigate(`/${user.username}`)
             // console.log(commentData);
@@ -117,6 +118,12 @@ const Profile = ({ name, email }) => {
                         </Button>
                     </form>
                 </Stack>
+                {signUp && <Typography variant='p' sx={{ fontSize: "18x", textAlign: "center" }}>
+                    Why Not create your account and hear what others have to say?
+                    <Link to="/signup">
+                        <span className='bg-black text-[#fff]'>Signup</span>
+                    </Link>
+                </Typography>}
             </Box>
         </Box>
     )
